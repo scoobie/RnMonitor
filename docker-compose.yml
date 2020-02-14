@@ -1,30 +1,32 @@
 version: '3'
 
 services:
-  rnmonitor-postgres:
+  db:
     image: postgres
+    restart: always
     environment:
-      POSTGRES_PASSWORD: rnmonitor2019
+      POSTGRES_PASSWORD: 1234
       POSTGRES_USER: postgres
       POSTGRES_DB:   rnmonitor
     ports:
       - "5432:5432"
     volumes:
-      - ./pgdata:/var/lib/postgressql/data
+      - /var/postgres/data:/var/lib/postgressql/data
     networks:
       - compose-network
   rnmonitor-pgadmin:
     image: dpage/pgadmin4
+    restart:always
     environment:
       PGADMIN_DEFAULT_EMAIL: rolando.a@sapo.pt
-      PGADMIN_DEFAULT_PASSWORD: rnmonitor2019
+      PGADMIN_DEFAULT_PASSWORD: rnmonitor2020
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
-      - rnmonitor-postgres
+      - db
     networks:
-      - compose-network
+      - postgresql
 
 networks:
-  compose-network:
+  postgresql:
     driver: bridge
