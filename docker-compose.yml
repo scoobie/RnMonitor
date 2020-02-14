@@ -13,7 +13,7 @@ services:
     volumes:
       - /var/postgres/data:/var/lib/postgressql/data
     networks:
-      - compose-network
+      - postgresql
   rnmonitor-pgadmin:
     image: dpage/pgadmin4
     restart: always
