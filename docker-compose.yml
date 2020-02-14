@@ -16,7 +16,7 @@ services:
       - compose-network
   rnmonitor-pgadmin:
     image: dpage/pgadmin4
-    restart:always
+    restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: rolando.a@sapo.pt
       PGADMIN_DEFAULT_PASSWORD: rnmonitor2020
