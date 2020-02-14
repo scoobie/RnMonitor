@@ -1,32 +1,39 @@
 version: '3'
 
 services:
-  db:
+  postgres:
+    container_name: postgres_container
     image: postgres
-    restart: always
     environment:
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_USER: postgres
-      POSTGRES_DB:   rnmonitor
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
     ports:
       - "5432:5432"
-    volumes:
-      - /var/postgres/data:/var/lib/postgressql/data
     networks:
-      - postgresql
-  rnmonitor-pgadmin:
-    image: dpage/pgadmin4
+      - postgres
     restart: always
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: rolando.a@sapo.pt
-      PGADMIN_DEFAULT_PASSWORD: rnmonitor2020
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    volumes:
+      - pgadmin:/root/.pgadmin
     ports:
-      - "8080:80"
-    depends_on:
-      - db
+      - "${PGADMIN_PORT:-5050}:80"
     networks:
-      - postgresql
+      - postgres
+    restart: always
 
 networks:
-  postgresql:
+  postgres:
     driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:
