@@ -1,8 +1,6 @@
 version: '3'
 
 services:
-  pdi:
-    build: .
   postgres:
     image: postgres
     hostname: postgres
@@ -15,7 +13,6 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
-
   pgadmin:
     image: dpage/pgadmin4
     depends_on:
