@@ -1,6 +1,8 @@
 version: '3'
 
 services:
+  pdi:
+    build: .
   postgres:
     image: postgres
     hostname: postgres
