@@ -1,5 +1,5 @@
 FROM openjdk:8
-MAINTAINER Andre Pereira andrespp@gmail.com
+MAINTAINER Rolando Azevedo rolando.a@sapo.pt
 
 # Set Environment Variables
 ENV PDI_VERSION=7.1 PDI_BUILD=7.1.0.0-12 \
