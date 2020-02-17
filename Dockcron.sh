@@ -2,8 +2,8 @@
 
 Docker()
 {
-docker container run --rm andrespp/pdi
-docker container run --rm -v $(pwd):/jobs andrespp/pdi runt sample/dummy.ktr
+#docker container run --rm andrespp/pdi
+#docker container run --rm -v $(pwd):/jobs andrespp/pdi runt sample/dummy.ktr
 docker container run --rm -v $(pwd):/jobs andrespp/pdi runj  sample/dummy.kjb
 }
 
