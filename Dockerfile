@@ -32,5 +32,6 @@ RUN apt-get update && apt-get install -y xauth
 #VOLUME /jobs
 
 COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["help"]
