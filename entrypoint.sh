@@ -36,8 +36,11 @@ run_spoon() {
 
 print_usage() {
 echo "
+
 Usage:	$0 COMMAND
+
 Pentaho Data Integration (PDI)
+
 Options:
   runj filename		Run job file
   runt filename		Run transformation file
