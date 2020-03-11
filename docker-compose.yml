@@ -13,6 +13,8 @@ services:
       POSTGRES_DB: rnmonitor
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    networks:
+      - rnnetwork
     restart: unless-stopped
   pgadmin:
     container_name: rn_pgadmin
@@ -23,10 +25,24 @@ services:
       - "5555:80"
     volumes:
       - pgadmin:/root/.pgadmin
+    networks:
+      - rnnetwork
     environment:
       PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
       PGADMIN_DEFAULT_PASSWORD: admin
     restart: unless-stopped
+  pdi:
+    container_name: pdi
+    image andrespp:pdi
+    ports:
+      - "8181"
+    links:
+      - postgres
+    networks:
+      - rnnetwork
 volumes:
   pgadmin:
   postgres-data:
+networks:
+  rnnetwork:
+    driver: bridge
