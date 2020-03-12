@@ -33,9 +33,7 @@ services:
     restart: unless-stopped
   pdi:
     container_name: pdi
-    image andrespp:pdi
-    ports:
-      - "8181"
+    image: andrespp/pdi
     links:
       - postgres
     networks:
