@@ -23,7 +23,7 @@ RUN wget https://downloads.sourceforge.net/project/jtds/jtds/1.3.1/jtds-1.3.1-di
 	&& unzip Jaybird-3.0.4-JDK_1.8.zip -d lib \
 	&& rm -rf lib/docs/ Jaybird-3.0.4-JDK_1.8.zip
 
-RUN wget --progress=dot:giga -O /lib:https://jdbc.postgresql.org/download/postgresql-${POSTGRESQL_DRIVER_VERSION}.jre6.jar
+RUN wget --progress=dot:giga -O /lib/jdbc.postgresql.org/download/postgresql-${POSTGRESQL_DRIVER_VERSION}.jre6.jar :https://jdbc.postgresql.org/download/postgresql-${POSTGRESQL_DRIVER_VERSION}.jre6.jar
 
 # First time run
 RUN kitchen.sh -file samples/transformations/files/test-job.kjb
