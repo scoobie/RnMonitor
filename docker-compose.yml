@@ -9,7 +9,7 @@ services:
       - "15432:5432"
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: rn2020
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: rnmonitor
     volumes:
       - postgres-data:/var/lib/postgresql/data
@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
   pdi:
     container_name: pdi
-    image: andrespp/pdi
+    build: .
     links:
       - postgres
     networks:
