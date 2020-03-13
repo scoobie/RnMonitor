@@ -2,7 +2,7 @@
 
 Docker()
 {
-docker container run --rm -v $(pwd):/jobs pdi runj  etl/dummy.kjb
+docker container run --rm -v $(pwd):/jobs andrespp/pdi runj  jobs/dummy.kjb
 }
 
 Checking()
